@@ -1,0 +1,24 @@
+.header-container {
+  margin: 0 0 5em;
+  padding: 2.5em 8%;
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
+}
+
+.header-title {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 2rem;
+  color: #3b3b3b;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    margin: 0 0 2.5em;
+    padding: 1em 8%;
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+}
