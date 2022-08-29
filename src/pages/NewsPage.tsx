@@ -4,6 +4,7 @@ import { PostsContainer } from '@/components/PostsContainer';
 import { FilterSelectComponent } from '@/components/FilterSelectComponent';
 import useFavoritePosts from '@/hooks/useFavoritePosts';
 import usePostNews from '@/hooks/usePostNews';
+import { LoadingComponent } from '@/components/LoadingComponent';
 
 const NewsPage: FunctionComponent = () => {
   const [currentFilter, setCurrentFilter] = useState<NewsType | undefined>(
@@ -45,6 +46,7 @@ const NewsPage: FunctionComponent = () => {
         removeFromFavorite={removeFromFavorite}
         lastPostElementRef={lastPostElementRef}
       />
+      {isLoading && <LoadingComponent />}
     </div>
   );
 };
