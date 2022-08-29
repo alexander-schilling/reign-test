@@ -1,0 +1,23 @@
+.posts-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 2em;
+  column-gap: 3em;
+
+  margin-bottom: 5rem;
+}
+
+.post-left-content {
+  color: inherit;
+  text-decoration: none;
+}
+
+.post-right-content {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .posts-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
