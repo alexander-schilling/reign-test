@@ -1,0 +1,54 @@
+:root {
+  --post-border-radius: 6px;
+}
+
+.post-container {
+  display: flex;
+
+  border-radius: var(--post-border-radius);
+  border: solid 2px #cecece;
+
+  font-weight: 500;
+  color: #6b6b6b;
+
+  transition: 100ms;
+}
+
+.post-container:hover {
+  opacity: 0.4;
+  transition: 100ms;
+}
+
+.post-left-content {
+  width: 88%;
+  padding: 3% 3%;
+}
+
+.post-timestamp {
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 8px;
+}
+
+.post-timestamp-icon {
+  margin-right: 5px;
+  height: 1.2em;
+}
+
+.post-timestamp-text {
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #979797;
+}
+
+.post-right-content {
+  width: 12%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #f7f7f7;
+  border-radius: 0 var(--post-border-radius) var(--post-border-radius) 0;
+}
