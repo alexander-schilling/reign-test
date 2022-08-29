@@ -1,46 +1,111 @@
-# Getting Started with Create React App
+# Reign Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+The test is is as follows:
 
-In the project directory, you can run:
+### CHALLENGE
 
-### `yarn start`
+Context: We would like you to build a small responsive web application to test your
+knowledge of Front End Development and related technologies.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Please refer to the attached document for an understanding of what the finished app
+should look like.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### STACK
 
-### `yarn test`
+You must use the following technologies to build the app:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The latest version of the frameworks: React or Angular
+- HTML/CSS only for building the UI components
+- Deployment of the web app on Netlify from your Git repository using the New Site
+  from Git workflow
 
-### `yarn build`
+### API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The web application must request data to the Hackers News public API. The dropdown
+selector component should use the URL parameter “query” from the “search by date”
+API in order to filter the posts, for example:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Angular: https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0
+- React: https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=0
+- Vuejs: https://hn.algolia.com/api/v1/search_by_date?query=vuejs&page=0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The pagination should be implemented using the “page” URL parameter from this API.
+The attributes to use for the post UI are author, story_title, story_url, created_at.
+If any of these attributes are not present in the object response, the post should be
+discarded from the data.
 
-### `yarn eject`
+### FUNCTIONALITY
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- The selected filter should persist on the local storage
+- The favorited posts should persist on the local storage
+- The web app is expected to work as a responsive web application
+- If you decide to implement the pagination component, it should behave like this
+  one: https://material-ui.com/components/pagination/
+- When clicking on the row, a new tab should be open with the link of the post
+  (story_url)
+- Clicking on the “like button” should not trigger the opening of the post URL link
+- When hovering on the row, apply opacity to the entire row and its children (texts,
+  icons, like button, etc)
+  BONUS
+- Implement unit testing
+- Good use of Typescript
+- Pagination as infinite scroll
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### WHAT WILL BE EVALUATED?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Documentation
+- Testing
+- Clean code
+- Software design
+- Git history
+- Solution deployed
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Solution
 
-## Learn More
+The project is made with Create React App, using Craco to override default settings, specifically the typescript alias configuration.
+For routing, the app uses the react-router-dom version 6. With this, the app is using a main layout, which contains the common components, in this case, the header and navbar.
+For the pages, I've created two of them, one for the news, and other for the favorites.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### News Page
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The news page is the main page of the app, where the user can see the news. This page contains 2 main components, the filter component and the news container.
+The filter select component is made with the use of the react-select component, simply because it allowed me to customize the content of the options and insert images in them. This component also tracks the current value of the filter.
+The news container has every post component in a grid of two columns, and one for screens with max width of 768px, which it has these elements:
+
+- Timestamp with author. For the timestamp I've used moment.js to format the date with `fromNow` and display it with the relative time.
+- The title of the story. This two elements open a new tab with the story url.
+- The favorite button, which toggles the state of the post.
+
+Each page of the news is requested using Axios, and they are filtered to check if the post should be rendered in the UI.
+
+### Favorites Page
+
+The favorites page is the page where the user can see the favorites. This page only renders the user favorites posts, which is the same news container as the news page.
+
+### Notes
+
+#### Unit testing
+
+This is the first time that I've used unit testing. I've had an idea of how to do them, but I've never really used them, so I studied unit and integration testing. I implemented a couple of them for the first time, but I wouldn't consider what is done here for the bonus, but I will certainly love to study more and integrate them in my projects with Test Driven Development.
+
+#### Folder structure
+
+I've tried to organize my projects better, so I'm constantly trying to keep them organized, I've seen boilerplates for projects like this, and taken inspiration from them, still would love to improve this.
+
+#### Infinite scrolling
+
+For the infinite scrolling, I had an idea on how to do it, but the implementation of it was followed from [this video](https://www.youtube.com/watch?v=NZKUirTtxcg)
+
+#### Styling
+
+I avoided using too much use of the sizes provided in the Zeplin project, because it had mainly pixel values, and it would be hard to scale them for different devices.
+
+#### Posts
+
+The posts sometimes had the same story id and story url but with different author, so when a duplicated post is favorited, the app will show the clicked one.
+
+## Deployment
+
+Read [README.CRA.md](README.CRA.md) for more information.
