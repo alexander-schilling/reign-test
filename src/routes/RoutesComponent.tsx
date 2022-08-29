@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AppLayout } from '../layouts/AppLayout';
-import { FavoritesPage } from '../pages/FavoritesPage';
-import { NewsPage } from '../pages/NewsPage';
+import { AppLayout } from '@/layouts/AppLayout';
+import { FavoritesPage } from '@/pages/FavoritesPage';
+import { NewsPage } from '@/pages/NewsPage';
 
 const RoutesComponent: FunctionComponent = () => {
   return (
